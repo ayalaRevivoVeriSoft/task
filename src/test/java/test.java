@@ -3,32 +3,24 @@ import co.verisoft.fw.selenium.drivers.VerisoftDriver;
 import co.verisoft.fw.selenium.drivers.factory.DriverCapabilities;
 import co.verisoft.fw.selenium.junit.extensions.DriverInjectionExtension;
 import co.verisoft.fw.selenium.junit.extensions.SeleniumLogExtesion;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static co.verisoft.fw.utils.Asserts.assertTrue;
 
-
-import org.openqa.selenium.support.PageFactory;
-import pageObject.homePage;
-import pageObject.menuLeft;
-import pageObject.javaPage;
-import pageObject.xmlFile;
-import pageObject.JavaIntroductionPage;
-import pageObject.htmlPage;
-import pageObject.htmlTablePage;
+import co.verisoft.PageObject.homePage;
+import co.verisoft.PageObject.javaPage;
+import co.verisoft.FileOperationFunctions.xmlFile;
+import co.verisoft.PageObject.JavaIntroductionPage;
+import co.verisoft.PageObject.htmlPage;
+import co.verisoft.PageObject.htmlTablePage;
+import co.verisoft.PageObject.menuLeft;
 
 
 @ExtentReport
 @ExtendWith({DriverInjectionExtension.class, SeleniumLogExtesion.class})
 public class test {
-    @DriverCapabilities
-    DesiredCapabilities capabilities = new DesiredCapabilities();
-    {
-        capabilities.setBrowserName("firefox");
-    }
 
     homePage home;
     menuLeft menuL;
@@ -38,128 +30,122 @@ public class test {
     htmlPage htmlP;
     htmlTablePage htmlTableP;
 
+    @DriverCapabilities
+    DesiredCapabilities capabilities = new DesiredCapabilities();
+
+    {
+        capabilities.setBrowserName("firefox");
+    }
+
+
     @Test
     public void testF1(VerisoftDriver driver) throws InterruptedException {
-        xmlF = PageFactory.initElements(driver, xmlFile.class);
-
         driver.get(xmlF.getData("urlHomePage"));
-        home = PageFactory.initElements(driver, homePage.class);
-
+        home = new homePage(driver);
         assertTrue(home.isOnPage(), "Invalid");
-        Thread.sleep(3000);
+        driver.quit();
     }
+
 
     @Test
     public void testF2(VerisoftDriver driver) throws InterruptedException {
-        xmlF = PageFactory.initElements(driver, xmlFile.class);
-
         driver.get(xmlF.getData("urlHomePage"));
-        home = PageFactory.initElements(driver, homePage.class);
-
-        home.insertText("java");
+        home = new homePage(driver);
+        home.insertTextToSearch("java");
         assertTrue(home.listOpen() && home.listContainStr("java"), "the list is open and contain java");
+        driver.quit();
     }
+
 
     @Test
     public void testF3(VerisoftDriver driver) {
-        xmlF = PageFactory.initElements(driver, xmlFile.class);
-
         driver.get(xmlF.getData("urlHomePage"));
-        home = PageFactory.initElements(driver, homePage.class);
-
-        home.insertText("java");
+        home = new homePage(driver);
+        home.insertTextToSearch("java");
         home.chooseOne("java tutorial");
+        driver.quit();
     }
+
 
     @Test
     public void testF4(VerisoftDriver driver) {
-        xmlF = PageFactory.initElements(driver, xmlFile.class);
-
         driver.get(xmlF.getData("urlJavaT"));
-        menuL = PageFactory.initElements(driver, menuLeft.class);
-
-       assertTrue(menuL.listContain(xmlF.getListFromXml("expectedTopics"),menuL.menu_list), "the menu is display");
-        assertTrue(menuL.onlylistContain(xmlF.getListFromXml("expectedJavaOutput"),menuL.list_output), "the menu is display");
-        assertTrue(menuL.onlylistContain(xmlF.getListFromXml("expectedJavaVariables"),menuL.list_variables), "the menu is display");
-
-
+        javaP = new javaPage(driver);
+        assertTrue(menuL.listContain(xmlF.getListFromXml("expectedTopics"), javaP.menu_list), "the menu is display");
+        assertTrue(menuL.onlylistContain(xmlF.getListFromXml("expectedJavaOutput"), javaP.list_output), "the menu is display");
+        assertTrue(menuL.onlylistContain(xmlF.getListFromXml("expectedJavaVariables"), javaP.list_variables), "the menu is display");
+        driver.quit();
     }
+
 
     @Test
     public void testF5(VerisoftDriver driver) {
-        xmlF = PageFactory.initElements(driver, xmlFile.class);
-
         driver.get(xmlF.getData("urlJavaT"));
-        javaP = PageFactory.initElements(driver, javaPage.class);
-
+        javaP = new javaPage(driver);
         assertTrue(javaP.isOnPage(), "is on java tutorial");
+        driver.quit();
     }
+
 
     @Test
     public void testF6(VerisoftDriver driver) {
-        xmlF = PageFactory.initElements(driver, xmlFile.class);
-
         driver.get(xmlF.getData("urlJavaT"));
-        javaP = PageFactory.initElements(driver, javaPage.class);
-        JavaIntroductionP = PageFactory.initElements(driver, JavaIntroductionPage.class);
-
-
+        javaP = new javaPage(driver);
+        JavaIntroductionP = new JavaIntroductionPage(driver);
         javaP.btnTop.clickBTNNext();
         assertTrue(JavaIntroductionP.isOnPage(), "is on java Introduction");
-
+        driver.quit();
     }
+
 
     @Test
     public void testF7(VerisoftDriver driver) {
-        xmlF = PageFactory.initElements(driver, xmlFile.class);
         driver.get(xmlF.getData("urlJavaqI"));
-        javaP = PageFactory.initElements(driver, javaPage.class);
-        JavaIntroductionP = PageFactory.initElements(driver, JavaIntroductionPage.class);
+        javaP = new javaPage(driver);
+        JavaIntroductionP = new JavaIntroductionPage(driver);
         JavaIntroductionP.btnTop.clickBTNPrev();
         assertTrue(javaP.isOnPage(), "is on java tutorial");
-
+        driver.quit();
     }
 
     @Test
     public void testF8(VerisoftDriver driver) throws InterruptedException {
-        xmlF = PageFactory.initElements(driver, xmlFile.class);
         driver.get(xmlF.getData("urlJavaT"));
-        javaP = PageFactory.initElements(driver, javaPage.class);
-        htmlP = PageFactory.initElements(driver, htmlPage.class);
-
+        javaP = new javaPage(driver);
+        htmlP = new htmlPage(driver);
         javaP.mTop.clickOnHTML();
-        System.out.println(htmlP.isOnPage());
         assertTrue(htmlP.isOnPage(), "is on java tutorial");
         Thread.sleep(3000);
+        driver.quit();
     }
+
 
     @Test
     public void testF9(VerisoftDriver driver) throws InterruptedException {
-        xmlF = PageFactory.initElements(driver, xmlFile.class);
         driver.get(xmlF.getData("urlHTMLT"));
-        htmlP = PageFactory.initElements(driver, htmlPage.class);
-
-        htmlP.goTo("HTML Tables");
+        htmlP = new htmlPage(driver);
+        htmlP.mLeft.goTo(driver, "HTML Tables");
         Thread.sleep(3000);
+        driver.quit();
     }
+
 
     @Test
     public void testF10(VerisoftDriver driver) {
-        xmlF = PageFactory.initElements(driver, xmlFile.class);
         driver.get(xmlF.getData("urlHTMLTable"));
-        htmlTableP = PageFactory.initElements(driver, htmlTablePage.class);
-
+        htmlTableP = new htmlTablePage(driver);
         assertTrue(htmlTableP.checkTh(xmlF.getListFromXml("expectedThTableHtml")), "Invalid th");
+        driver.quit();
     }
+
 
     @Test
     public void testF11(VerisoftDriver driver) {
-        xmlF = PageFactory.initElements(driver, xmlFile.class);
 
         driver.get(xmlF.getData("urlHTMLTable"));
-        htmlTableP = PageFactory.initElements(driver, htmlTablePage.class);
-
+        htmlTableP = new htmlTablePage(driver);
         assertTrue(htmlTableP.checkContactCountry(xmlF.getListFromXml("alfredsFutterkiste"), htmlTableP.alfreds_futterkiste), "Invalid");
         assertTrue(htmlTableP.checkContactCountry(xmlF.getListFromXml("centroComercialMoctezuma"), htmlTableP.centro_comercial_moctezuma), "Invalid");
+        driver.quit();
     }
 }
