@@ -62,9 +62,7 @@ public class htmlTablePage extends basePageWeb {
      * @return True if all table headers match a string in the given list, false otherwise.
      */
     public boolean checkTh(List<String> ls) {
-        System.out.println("ss");
         for (WebElement e : list_th) {
-            System.out.println(e.getText());
             if (!ls.contains(e.getText())) {
                 return false;
             }

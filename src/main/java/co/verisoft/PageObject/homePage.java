@@ -74,7 +74,6 @@ public class homePage extends BasePage {
     public void chooseOne(String txt) {
         List<WebElement> list_search = div_search.findElements(By.className("search_item"));
         for (WebElement e : list_search) {
-
             if ((e.getText().toLowerCase()).equals(txt)) {
                 e.click();
                 break;
