@@ -13,23 +13,28 @@ import java.util.List;
  It contains WebElements for the table headers and cells.
  */
 public class htmlTablePage extends basePageWeb {
+    /**
+     * The header element of the page.
+     */
 
+    @FindBy(css = "#main>h1")
+    public WebElement txt_h1;
     /**
      List of WebElements representing the table headers.
      */
-     @FindBy(xpath = "//*[@id='customers']/tbody/tr[1]/th")
+     @FindBy(css = "table#customers>tbody>th")
      public List<WebElement> list_th;
 
      /**
      List of WebElements representing the cells for the first row of data.
       */
-     @FindBy(xpath = "//*[@id='customers']/tbody/tr[2]/td[position()>=2 and position()<4]")
+     @FindBy(css = "table#customers>tbody>tr:nth-child(2)>td:nth-child(2) + td")
      public List<WebElement> alfreds_futterkiste;
 
      /**
      List of WebElements representing the cells for the second row of data.
       */
-     @FindBy(xpath = "//*[@id='customers']/tbody/tr[3]/td[position()>=2 and position()<4]")
+     @FindBy(css = "table#customers>tbody>tr:nth-child(3)>td:nth-child(2) + td")
      public List<WebElement> centro_comercial_moctezuma;
 
      /**
@@ -47,7 +52,7 @@ public class htmlTablePage extends basePageWeb {
      */
     @Override
     public boolean isOnPage() {
-        return false;
+        return super.isOnPage(txt_h1);
     }
 
     /**

@@ -11,7 +11,7 @@ public class htmlPage extends basePageWeb {
     /**
      * The header element of the page.
      */
-    @FindBy(xpath = "//*[@id='main']/h1")
+    @FindBy(css = "#main>h1")
     public WebElement txt_h1;
 
     /**
@@ -30,6 +30,7 @@ public class htmlPage extends basePageWeb {
      */
     @Override
     public boolean isOnPage() {
+
         return super.isOnPage(txt_h1);
     }
 }

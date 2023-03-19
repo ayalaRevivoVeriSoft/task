@@ -48,7 +48,7 @@ public class buttonTop extends BasePage {
 
     @Override
     public boolean isOnPage() {
-        return false;
+        return super.isOnPage(btn_prev.get(1));
     }
 }
 
