@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-
 /**
  * This class represents the top menu on a web page that extends the BasePage class.
  * <p>

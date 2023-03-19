@@ -41,7 +41,6 @@ public class menuLeft extends BasePage {
      * @return True if all the text in the list of WebElements is present in the list of strings, false otherwise.
      */
     public boolean listContain(List<String> lsToChack, List<WebElement> leFromeWeb) {
-        System.out.println(lsToChack);
         for (WebElement element : leFromeWeb) {
             if (!lsToChack.contains(element.getText())) {
                 return false;

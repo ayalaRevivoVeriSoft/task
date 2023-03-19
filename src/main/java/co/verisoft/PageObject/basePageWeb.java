@@ -3,7 +3,6 @@ package co.verisoft.PageObject;
 import co.verisoft.fw.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 
-
 /**
  * This abstract class represents a base web page. It extends the BasePage class
  * and provides access to the left and top menus, as well as the top buttons section.

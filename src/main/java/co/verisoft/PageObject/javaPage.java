@@ -34,7 +34,7 @@ public class javaPage extends basePageWeb {
     /**
      * List of WebElements for the variables items on the page.
      */
-//     @FindBy(css = "#leftmenuinnerinner>div:nth-child(1)>a")
+//     @FindBy(css = "div#leftmenuinnerinner>div:nth-child(1)>a")
 //     public List<WebElement> list_variables;
     @FindBy(xpath = " //*[@id='leftmenuinnerinner']/div[2]/a")
     public List<WebElement> list_variables;
