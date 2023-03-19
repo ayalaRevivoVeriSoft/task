@@ -43,7 +43,7 @@ public class test {
 
     @Test
     public void testF1(VerisoftDriver driver) throws InterruptedException {
-        driver.get(xmlF.getData("urlHomePage"));
+        driver.get(xmlF.getStringFromXml("urlHomePage"));
         home = new homePage(driver);
         assertTrue(home.isOnPage(), "Invalid");
         driver.quit();
@@ -52,7 +52,7 @@ public class test {
 
     @Test
     public void testF2(VerisoftDriver driver) throws InterruptedException {
-        driver.get(xmlF.getData("urlHomePage"));
+        driver.get(xmlF.getStringFromXml("urlHomePage"));
         home = new homePage(driver);
         home.insertTextToSearch("java");
         assertTrue(home.listOpen() && home.listContainStr("java"), "the list is open and contain java");
@@ -62,7 +62,7 @@ public class test {
 
     @Test
     public void testF3(VerisoftDriver driver) {
-        driver.get(xmlF.getData("urlHomePage"));
+        driver.get(xmlF.getStringFromXml("urlHomePage"));
         home = new homePage(driver);
         home.insertTextToSearch("java");
         home.chooseOne("java tutorial");
@@ -72,7 +72,7 @@ public class test {
 
     @Test
     public void testF4(VerisoftDriver driver) {
-        driver.get(xmlF.getData("urlJavaT"));
+        driver.get(xmlF.getStringFromXml("urlJavaT"));
         javaP = new javaPage(driver);
         assertTrue(javaP.mLeft.listContain(xmlF.getListFromXml("expectedTopics"), javaP.menu_list), "the menu is display");
         assertTrue(javaP.mLeft.onlyListContain(xmlF.getListFromXml("expectedJavaOutput"), javaP.list_output), "the menu is display");
@@ -83,7 +83,7 @@ public class test {
 
     @Test
     public void testF5(VerisoftDriver driver) {
-        driver.get(xmlF.getData("urlJavaT"));
+        driver.get(xmlF.getStringFromXml("urlJavaT"));
         javaP = new javaPage(driver);
         assertTrue(javaP.isOnPage(), "is on java tutorial");
         driver.quit();
@@ -92,7 +92,7 @@ public class test {
 
     @Test
     public void testF6(VerisoftDriver driver) {
-        driver.get(xmlF.getData("urlJavaT"));
+        driver.get(xmlF.getStringFromXml("urlJavaT"));
         javaP = new javaPage(driver);
         JavaIntroductionP = new JavaIntroductionPage(driver);
         javaP.btnTop.clickBTNNext();
@@ -103,7 +103,7 @@ public class test {
 
     @Test
     public void testF7(VerisoftDriver driver) {
-        driver.get(xmlF.getData("urlJavaqI"));
+        driver.get(xmlF.getStringFromXml("urlJavaqI"));
         javaP = new javaPage(driver);
         JavaIntroductionP = new JavaIntroductionPage(driver);
         JavaIntroductionP.btnTop.clickBTNPrev();
@@ -113,7 +113,7 @@ public class test {
 
     @Test
     public void testF8(VerisoftDriver driver) throws InterruptedException {
-        driver.get(xmlF.getData("urlJavaT"));
+        driver.get(xmlF.getStringFromXml("urlJavaT"));
         javaP = new javaPage(driver);
         htmlP = new htmlPage(driver);
         javaP.mTop.clickOnHTML();
@@ -124,7 +124,7 @@ public class test {
 
     @Test
     public void testF9(VerisoftDriver driver) throws InterruptedException {
-        driver.get(xmlF.getData("urlHTMLT"));
+        driver.get(xmlF.getStringFromXml("urlHTMLT"));
         htmlP = new htmlPage(driver);
         htmlP.mLeft.goTo(driver, "HTML Tables");
         driver.quit();
@@ -133,7 +133,7 @@ public class test {
 
     @Test
     public void testF10(VerisoftDriver driver) {
-        driver.get(xmlF.getData("urlHTMLTable"));
+        driver.get(xmlF.getStringFromXml("urlHTMLTable"));
         htmlTableP = new htmlTablePage(driver);
         assertTrue(htmlTableP.checkTh(xmlF.getListFromXml("expectedThTableHtml")), "Invalid th");
         driver.quit();
@@ -143,7 +143,7 @@ public class test {
     @Test
     public void testF11(VerisoftDriver driver) {
 
-        driver.get(xmlF.getData("urlHTMLTable"));
+        driver.get(xmlF.getStringFromXml("urlHTMLTable"));
         htmlTableP = new htmlTablePage(driver);
         assertTrue(htmlTableP.checkContactCountry(xmlF.getListFromXml("alfredsFutterkiste"), htmlTableP.alfreds_futterkiste), "Invalid");
         assertTrue(htmlTableP.checkContactCountry(xmlF.getListFromXml("centroComercialMoctezuma"), htmlTableP.centro_comercial_moctezuma), "Invalid");

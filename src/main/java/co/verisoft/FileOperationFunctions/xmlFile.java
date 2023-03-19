@@ -3,7 +3,6 @@ package co.verisoft.FileOperationFunctions;
 import lombok.extern.slf4j.Slf4j;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -18,37 +17,35 @@ import java.util.List;
  */
 public class xmlFile{
     /**
-     * Gets a list of values from the specified list node in the XML file.
-     * @param listName The name of the list node to get values from.
-     * @return A list of values from the specified list node in the XML file.
-     *         Returns an empty list if the list node is not found or if there are no values in the list.
+
+     Parses an XML file located at "./dataConfiguration.xml" and extracts a list of strings
+     from the first element with the specified name.
+     @param listName the name of the XML element to extract data from
+     @return a List of strings containing the data from the specified XML element
+     @throws IOException if there is an error reading the XML file
      */
+
     public static List<String> getListFromXml(String listName) {
-        List<String> list = new ArrayList<>();
+        List<String> dataList = new ArrayList<String>();
         try {
-            File file = new File("./dataConfiguration.xml");
-            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = builder.parse(file);
-            document.getDocumentElement().normalize();
-            NodeList nodeList = document.getElementsByTagName(listName);
-            Node node = nodeList.item(0);
-            if (node.getNodeType() == Node.ELEMENT_NODE) {
-                Element element = (Element) node;
-                NodeList childNodes = element.getChildNodes();
-                for (int i = 0; i < childNodes.getLength(); i++) {
-                    Node childNode = childNodes.item(i);
-                    if (childNode.getNodeType() == Node.ELEMENT_NODE) {
-                        Element childElement = (Element) childNode;
-                        String value = childElement.getTextContent();
-                        list.add(value);
-                    }
+            File xmlFile = new File("./dataConfiguration.xml");
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+            NodeList nodeList = doc.getElementsByTagName(listName);
+            Element element = (Element) nodeList.item(0);
+            NodeList childNodes = element.getChildNodes();
+            for (int i = 0; i < childNodes.getLength(); i++) {
+                if (childNodes.item(i).getNodeType() == Element.ELEMENT_NODE) {
+                    String data = childNodes.item(i).getTextContent().trim();
+                    dataList.add(data);
                 }
             }
         } catch (Exception e) {
             log.info("Unable to read from the XML");
         }
-        return list;
+        return dataList;
     }
 
     /**
@@ -57,7 +54,7 @@ public class xmlFile{
      * @return The value of the specified node in the XML file.
      *         Returns an empty string if the node is not found.
      */
-    public static String getData(String nodeName) {
+    public static String getStringFromXml(String nodeName) {
         DocumentBuilder dBuilder;
         Document doc = null;
         File fXmlFile = new File("./dataConfiguration.xml");
