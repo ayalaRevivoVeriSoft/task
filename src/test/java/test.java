@@ -15,10 +15,6 @@ import co.verisoft.FileOperationFunctions.xmlFile;
 import co.verisoft.PageObject.JavaIntroductionPage;
 import co.verisoft.PageObject.htmlPage;
 import co.verisoft.PageObject.htmlTablePage;
-import co.verisoft.PageObject.menuLeft;
-import co.verisoft.FileOperationFunctions.xmlFile;
-
-import org.openqa.selenium.support.PageFactory;
 
 
 @ExtentReport

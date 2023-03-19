@@ -15,14 +15,14 @@ import java.util.List;
 /**
  * This class provides methods to read data from an XML file.
  */
-public class xmlFile{
+public class xmlFile {
     /**
-
-     Parses an XML file located at "./dataConfiguration.xml" and extracts a list of strings
-     from the first element with the specified name.
-     @param listName the name of the XML element to extract data from
-     @return a List of strings containing the data from the specified XML element
-     @throws IOException if there is an error reading the XML file
+     * Parses an XML file located at "./dataConfiguration.xml" and extracts a list of strings
+     * from the first element with the specified name.
+     *
+     * @param listName the name of the XML element to extract data from
+     * @return a List of strings containing the data from the specified XML element
+     * @throws IOException if there is an error reading the XML file
      */
 
     public static List<String> getListFromXml(String listName) {
@@ -50,9 +50,10 @@ public class xmlFile{
 
     /**
      * Gets the value of the specified node in the XML file.
+     *
      * @param nodeName The name of the node to get the value of.
      * @return The value of the specified node in the XML file.
-     *         Returns an empty string if the node is not found.
+     * Returns an empty string if the node is not found.
      */
     public static String getStringFromXml(String nodeName) {
         DocumentBuilder dBuilder;

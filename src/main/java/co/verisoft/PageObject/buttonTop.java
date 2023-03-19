@@ -31,6 +31,7 @@ public class buttonTop extends BasePage {
     public buttonTop(WebDriver driver) {
         super(driver);
     }
+
     /**
      * Clicks the first "Next" button in the list to navigate to the next page.
      */

@@ -9,8 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 /**
-
- A page object representing the home page of a website.
+ * A page object representing the home page of a website.
  */
 public class homePage extends BasePage {
     // Page element locators
@@ -20,38 +19,40 @@ public class homePage extends BasePage {
     public WebElement input_search;
     @FindBy(id = "listofsearchresults")
     public WebElement div_search;
-    /**
 
-     Constructs a new instance of the home page with the given WebDriver.
-     @param driver the WebDriver to use for interacting with the page
+    /**
+     * Constructs a new instance of the home page with the given WebDriver.
+     *
+     * @param driver the WebDriver to use for interacting with the page
      */
     public homePage(WebDriver driver) {
         super(driver);
 
     }
-    /**
 
-     Inserts the given text into the search input field.
-     @param txt the text to insert
+    /**
+     * Inserts the given text into the search input field.
+     *
+     * @param txt the text to insert
      */
     public void insertTextToSearch(String txt) {
         input_search.sendKeys(txt);
     }
-    /**
 
-     Returns true if the search results list is open, false otherwise.
-     @return true if the search results list is open, false otherwise
+    /**
+     * Returns true if the search results list is open, false otherwise.
+     *
+     * @return true if the search results list is open, false otherwise
      */
     public boolean listOpen() {
         return !div_search.getAttribute("style").contains("none");
     }
+
     /**
-
-     Returns true if the search results list contains the given string, false otherwise.
-
-     @param str the string to search for in the search results list
-
-     @return true if the search results list contains the given string, false otherwise
+     * Returns true if the search results list contains the given string, false otherwise.
+     *
+     * @param str the string to search for in the search results list
+     * @return true if the search results list contains the given string, false otherwise
      */
     public boolean listContainStr(String str) {
 
@@ -64,11 +65,11 @@ public class homePage extends BasePage {
         }
         return true;
     }
+
     /**
-
-     Chooses the search result with the given text.
-
-     @param txt the text of the search result to choose
+     * Chooses the search result with the given text.
+     *
+     * @param txt the text of the search result to choose
      */
 
     public void chooseOne(String txt) {
@@ -81,9 +82,9 @@ public class homePage extends BasePage {
             }
         }
     }
-    /**
 
-     Returns true if the page is on the home page, false otherwise.
+    /**
+     * Returns true if the page is on the home page, false otherwise.
      */
     @Override
     public boolean isOnPage() {
