@@ -42,6 +42,7 @@ public class menuLeft extends BasePage {
      * @return True if all the text in the list of WebElements is present in the list of strings, false otherwise.
      */
     public boolean listContain(List<String> lsToChack, List<WebElement> leFromeWeb) {
+        System.out.println(lsToChack);
         for (WebElement element : leFromeWeb) {
             if (!lsToChack.contains(element.getText())) {
                 return false;
@@ -57,7 +58,7 @@ public class menuLeft extends BasePage {
      * @param leFromeWeb The list of WebElements to check against.
      * @return True if the text in the list of WebElements is equal to the list of strings, false otherwise.
      */
-    public boolean onlylistContain(List<String> lsToChack, List<WebElement> leFromeWeb) {
+    public boolean onlyListContain(List<String> lsToChack, List<WebElement> leFromeWeb) {
         List<String> leToString = new ArrayList<String>();
         for (WebElement element : leFromeWeb) {
             leToString.add(element.getAttribute("innerHTML"));

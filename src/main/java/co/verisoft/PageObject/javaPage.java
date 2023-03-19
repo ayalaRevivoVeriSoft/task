@@ -17,25 +17,25 @@ public class javaPage extends basePageWeb {
     /**
      Web element for the h1 header on the page.
      */
-     @FindBy(xpath = "//[@id='main']/h1")
+     @FindBy(xpath = "//*[@id='main']/h1")
      public WebElement txt_h1;
 
      /**
      List of WebElements for the items in the left menu.
      */
-     @FindBy(xpath = "//[@id='leftmenuinnerinner']/a")
+     @FindBy(xpath = "//*[@id='leftmenuinnerinner']/a")
      public List<WebElement> menu_list;
 
      /**
      List of WebElements for the output items on the page.
      */
-     @FindBy(xpath = "//[@id='leftmenuinnerinner']/div[1]/a")
+     @FindBy(xpath = "//*[@id='leftmenuinnerinner']/div[1]/a")
      public List<WebElement> list_output;
 
      /**
      List of WebElements for the variables items on the page.
       */
-     @FindBy(xpath = "//[@id='leftmenuinnerinner']/div[2]/a")
+     @FindBy(xpath = "//*[@id='leftmenuinnerinner']/div[2]/a")
      public List<WebElement> list_variables;
 
      /**

@@ -17,19 +17,19 @@ public class htmlTablePage extends basePageWeb {
     /**
      List of WebElements representing the table headers.
      */
-     @FindBy(xpath = "//[@id='customers']/tbody/tr[1]/th")
+     @FindBy(xpath = "//*[@id='customers']/tbody/tr[1]/th")
      public List<WebElement> list_th;
 
      /**
      List of WebElements representing the cells for the first row of data.
       */
-     @FindBy(xpath = "//[@id='customers']/tbody/tr[2]/td[position()>=2 and position()<4]")
+     @FindBy(xpath = "//*[@id='customers']/tbody/tr[2]/td[position()>=2 and position()<4]")
      public List<WebElement> alfreds_futterkiste;
 
      /**
      List of WebElements representing the cells for the second row of data.
       */
-     @FindBy(xpath = "//[@id='customers']/tbody/tr[3]/td[position()>=2 and position()<4]")
+     @FindBy(xpath = "//*[@id='customers']/tbody/tr[3]/td[position()>=2 and position()<4]")
      public List<WebElement> centro_comercial_moctezuma;
 
      /**
@@ -56,6 +56,7 @@ public class htmlTablePage extends basePageWeb {
      @return True if all table headers match a string in the given list, false otherwise.
      */
     public boolean checkTh(List<String> ls) {
+        System.out.println("ss");
         for (WebElement e : list_th) {
             System.out.println(e.getText());
             if (!ls.contains(e.getText())) {

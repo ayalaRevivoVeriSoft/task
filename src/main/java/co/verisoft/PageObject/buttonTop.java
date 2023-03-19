@@ -24,13 +24,13 @@ public class buttonTop extends BasePage {
      * A list of WebElements representing the "Previous" buttons.
      * Each element in the list can be clicked to navigate to the previous page.
      */
-    @FindBy(css = "w3-left.w3-btn")
+
+    @FindBy(css = "a[class='w3-left w3-btn']")
     public List<WebElement> btn_prev;
 
     public buttonTop(WebDriver driver) {
         super(driver);
     }
-
     /**
      * Clicks the first "Next" button in the list to navigate to the next page.
      */
@@ -42,6 +42,7 @@ public class buttonTop extends BasePage {
      * Clicks the first "Previous" button in the list to navigate to the previous page.
      */
     public void clickBTNPrev() {
+
         btn_prev.get(0).click();
     }
 

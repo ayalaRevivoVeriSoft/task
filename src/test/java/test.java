@@ -16,6 +16,9 @@ import co.verisoft.PageObject.JavaIntroductionPage;
 import co.verisoft.PageObject.htmlPage;
 import co.verisoft.PageObject.htmlTablePage;
 import co.verisoft.PageObject.menuLeft;
+import co.verisoft.FileOperationFunctions.xmlFile;
+
+import org.openqa.selenium.support.PageFactory;
 
 
 @ExtentReport
@@ -23,7 +26,7 @@ import co.verisoft.PageObject.menuLeft;
 public class test {
 
     homePage home;
-    menuLeft menuL;
+
     javaPage javaP;
     xmlFile xmlF;
     JavaIntroductionPage JavaIntroductionP;
@@ -71,9 +74,9 @@ public class test {
     public void testF4(VerisoftDriver driver) {
         driver.get(xmlF.getData("urlJavaT"));
         javaP = new javaPage(driver);
-        assertTrue(menuL.listContain(xmlF.getListFromXml("expectedTopics"), javaP.menu_list), "the menu is display");
-        assertTrue(menuL.onlylistContain(xmlF.getListFromXml("expectedJavaOutput"), javaP.list_output), "the menu is display");
-        assertTrue(menuL.onlylistContain(xmlF.getListFromXml("expectedJavaVariables"), javaP.list_variables), "the menu is display");
+        assertTrue(javaP.mLeft.listContain(xmlF.getListFromXml("expectedTopics"), javaP.menu_list), "the menu is display");
+        assertTrue(javaP.mLeft.onlyListContain(xmlF.getListFromXml("expectedJavaOutput"), javaP.list_output), "the menu is display");
+        assertTrue(javaP.mLeft.onlyListContain(xmlF.getListFromXml("expectedJavaVariables"), javaP.list_variables), "the menu is display");
         driver.quit();
     }
 
@@ -115,7 +118,6 @@ public class test {
         htmlP = new htmlPage(driver);
         javaP.mTop.clickOnHTML();
         assertTrue(htmlP.isOnPage(), "is on java tutorial");
-        Thread.sleep(3000);
         driver.quit();
     }
 
@@ -125,7 +127,6 @@ public class test {
         driver.get(xmlF.getData("urlHTMLT"));
         htmlP = new htmlPage(driver);
         htmlP.mLeft.goTo(driver, "HTML Tables");
-        Thread.sleep(3000);
         driver.quit();
     }
 

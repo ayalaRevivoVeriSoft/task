@@ -35,9 +35,9 @@ public abstract class basePageWeb extends BasePage {
      */
     public basePageWeb(WebDriver driver) {
         super(driver);
-        mLeft = PageFactory.initElements(driver, menuLeft.class);
-        mTop = PageFactory.initElements(driver, menuTop.class);
-        btnTop = PageFactory.initElements(driver, buttonTop.class);
+        mLeft = new menuLeft(driver);
+        mTop = new menuTop(driver);
+        btnTop = new buttonTop(driver);
     }
 
     /**

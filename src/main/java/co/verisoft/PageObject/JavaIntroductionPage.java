@@ -15,7 +15,7 @@ public class JavaIntroductionPage extends basePageWeb {
     /**
      Web element for the h1 header on the page.
      */
-     @FindBy(xpath = "//[@id='main']/h1")
+     @FindBy(xpath = "//*[@id='main']/h1")
      public WebElement txt_h1;
 
      /**
